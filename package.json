@@ -1,0 +1,14 @@
+{
+  "name": "libinjection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-gyp configure && node-gyp build"
+  },
+  "author": "naor.tedgi@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "nan": "^2.20.0"
+  }
+}
