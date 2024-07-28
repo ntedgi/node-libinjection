@@ -1,10 +1,25 @@
-const addon = require('./build/Release/myaddon');
+const addon = require('./build/Release/injection');
 
-const input = `SELECT * FROM members WHERE username = 'admin'--' AND password = 'password' ';`
-const result = addon.checkSQLInjection(input);
-
-if (result.is_sqli) {
-  console.log(`SQL Injection detected with fingerprint: ${result.fingerprint}`);
-} else {
-  console.log('No SQL Injection detected');
+class SQLInjection {
+    constructor() {
+        this.addon = addon;
+    }
+    // check if input is SQL Injection
+    // return { isSqli: boolean, fingerprint: string }
+    check(input) {
+        const { is_sqli, fingerprint } = this.addon.checkSQLInjection(input);
+        return {
+            isSqli: is_sqli,
+            fingerprint
+        }
+    }
+    // check if input is SQL Injection
+    // return boolean
+    has(input) {
+        return this.addon.hasSQLInjection(input).is_sqli;
+    }
 }
+
+module.exports = {
+    SQLInjection
+};

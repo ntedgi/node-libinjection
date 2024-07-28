@@ -5,14 +5,12 @@ This is a addon of the SQLi detection tool `libinjection` to NodeJS.
 
 
 ```js
-    const input = `SELECT * FROM members WHERE username = 'admin'--' AND password = 'password' ';`
-    const result = libinjection.checkSQLInjection(input);
+ const {SQLInjection} = require('./index');
+const sqli = new SQLInjection();
+const input = `SELECT * FROM members WHERE username = 'admin'--' AND password = 'password' ';`
 
-    if (result.is_sqli) {
-    console.log(`SQL Injection detected with fingerprint: ${result.fingerprint}`);
-    } else {
-    console.log('No SQL Injection detected');
-    }
+console.log(sqli.has(input)); // true
+console.log(sqli.check(input)); // { isSqli: true, fingerprint: 'Eoknk' }
 
     // SQL Injection detected with fingerprint: Eoknk
 ```
