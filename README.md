@@ -5,7 +5,7 @@ This is a addon of the SQLi detection tool `libinjection` to NodeJS.
 
 
 ```js
- const {SQLInjection} = require('./index');
+const {SQLInjection} = require('./index');
 const sqli = new SQLInjection();
 const input = `SELECT * FROM members WHERE username = 'admin'--' AND password = 'password' ';`
 
