@@ -1,9 +1,12 @@
 {
   "name": "libinjection",
   "version": "1.0.0",
-  "description": "",
+  "description": "it's a simple and fast library to detect SQL Injection in a string.",
   "main": "index.js",
   "scripts": {
+    "configure": "node-gyp configure",
+    "test": "make test",
+    "install": "node-gyp rebuild",
     "build": "node-gyp configure && node-gyp build"
   },
   "author": "naor.tedgi@gmail.com",
